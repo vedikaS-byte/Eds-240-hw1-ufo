@@ -17,6 +17,8 @@ editor_options:
 -   Some answers may become clearer once you’ve looked ahead at the code further down in the script. **Consider revisiting questions as you go.**
 :::
 
+**GitHub Repository Link:** <https://github.com/vedikaS-byte/Eds-240-hw1-ufo.git>
+
 ## I. Setup
 
 ```{r}
@@ -53,11 +55,9 @@ showtext::showtext_auto(enable = TRUE)
 ```
 
 1.  **What is the author defining in lines 15-17? Where else in the code do these defined variables show up? What advantage(s) is there to defining these values here, as variables, rather than defining the values directly throughout the script?**
+    -   In lines 15-17, a color palette is defined with hex codes for background (black) and accent (green) colors in the UFO visual. Each color is subset by index and assigned to a variable that is referenced for a specific use. For example, `bg` contains the black background color for the visual, which is referred to in the aesthetics for constructing the plot background fill and base color, such as in `plot_us` and the text color for `plot_shape`. The `accent` variable refers to the light green color primarily used for text color and the fill of graph aesthetics, such as bar fills (ex. `accent` is used to define the text color and fill color of the graphs in `plot_us` and `plot_day`).
 
-In lines 15-17, a color palette is defined with hex codes for background (black) and accent (green) colors in the UFO visual. Each color is subset by index and assigned to a variable that is referenced for a specific use. For example, `bg` contains the black background color for the visual, which is referred to in the aesthetics for constructing the plot background fill and base color, such as in `plot_us` and the text color for `plot_shape`. The `accent` variable refers to the light green color primarily used for text color and the fill of graph aesthetics, such as bar fills (ex. `accent` is used to define the text color and fill color of the graphs in `plot_us` and `plot_day`).
-
-The naming convention is convenient because saving the colors as variables prevents having to constantly reference the hex codes throughout the script. Additionally, it makes the code easier to read, maintain, and update, since changing a color only requires editing it in one place rather than multiple locations.
-
+    -   The naming convention is convenient because saving the colors as variables prevents having to constantly reference the hex codes throughout the script. Additionally, it makes the code easier to read, maintain, and update, since changing a color only requires editing it in one place rather than multiple locations.
 2.  **In your own words, explain what the function, `font_add_google()`, does. What's the difference between the two arguments, `name` and `family`?**
 
 -   `font_add_google()` is a function from the `sysfonts` package that downloads font files from the Google Fonts repository and registers them so they can be used in R graphics. The function searches for a font using its official Google Fonts name, downloads the necessary files, and makes the font available for plotting. The `name` argument specifies the exact Google Fonts name used to identify the preferred font. The `family` argument defines the font family name used within R, which acts as an internal label referenced by plotting functions, such as ggplot2. While `family` can be any string and does not need to match `name`, it is the value that can be later used when specifying the font in plots.
@@ -503,4 +503,4 @@ ggsave(plot = plot_final,
 
 24. **How, if at all, did you use AI tools to help you interpret this code? Describe your approach to using these tools for this assignment. In what ways was consulting the documentation more (or less) helpful than using AI?**
 
-    -   While AI was useful in understanding examples of applications of unfamiliar functions such as `inset_element()`, I found it easier to consult the documentation to better understand the definition of each function and its specific parameters. For example, I found myself consulting the documentation for `font_add_google()` to understand the difference between the `name` and `family` argument, while I asked AI to provide examples of different situations where `family` and `name` were not similar.
+    -   While AI was useful in understanding examples of applications of unfamiliar functions such as `inset_element()`, I found it easier to consult the documentation to better understand the definition of each function and its specific parameters. For example, I found myself consulting the documentation for `font_add_google()` to understand the difference between the `name` and `family` argument in its truest definition, while I asked AI to provide examples of different situations where `family` and `name` were not similar.

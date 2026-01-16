@@ -181,6 +181,7 @@ Some notes before you get started
 </ul>
 </div>
 </div>
+<p><strong>GitHub Repository Link:</strong> <a href="https://github.com/vedikaS-byte/Eds-240-hw1-ufo.git" class="uri">https://github.com/vedikaS-byte/Eds-240-hw1-ufo.git</a></p>
 <section id="i.-setup" class="level2">
 <h2 class="anchored" data-anchor-id="i.-setup">I. Setup</h2>
 <div class="cell">
@@ -213,11 +214,11 @@ Some notes before you get started
 <span id="cb1-27"><a href="#cb1-27"></a>showtext<span class="sc">::</span><span class="fu">showtext_auto</span>(<span class="at">enable =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol type="1">
-<li><strong>What is the author defining in lines 15-17? Where else in the code do these defined variables show up? What advantage(s) is there to defining these values here, as variables, rather than defining the values directly throughout the script?</strong></li>
-</ol>
-<p>In lines 15-17, a color palette is defined with hex codes for background (black) and accent (green) colors in the UFO visual. Each color is subset by index and assigned to a variable that is referenced for a specific use. For example, <code>bg</code> contains the black background color for the visual, which is referred to in the aesthetics for constructing the plot background fill and base color, such as in <code>plot_us</code> and the text color for <code>plot_shape</code>. The <code>accent</code> variable refers to the light green color primarily used for text color and the fill of graph aesthetics, such as bar fills (ex. <code>accent</code> is used to define the text color and fill color of the graphs in <code>plot_us</code> and <code>plot_day</code>).</p>
-<p>The naming convention is convenient because saving the colors as variables prevents having to constantly reference the hex codes throughout the script. Additionally, it makes the code easier to read, maintain, and update, since changing a color only requires editing it in one place rather than multiple locations.</p>
-<ol start="2" type="1">
+<li><strong>What is the author defining in lines 15-17? Where else in the code do these defined variables show up? What advantage(s) is there to defining these values here, as variables, rather than defining the values directly throughout the script?</strong>
+<ul>
+<li><p>In lines 15-17, a color palette is defined with hex codes for background (black) and accent (green) colors in the UFO visual. Each color is subset by index and assigned to a variable that is referenced for a specific use. For example, <code>bg</code> contains the black background color for the visual, which is referred to in the aesthetics for constructing the plot background fill and base color, such as in <code>plot_us</code> and the text color for <code>plot_shape</code>. The <code>accent</code> variable refers to the light green color primarily used for text color and the fill of graph aesthetics, such as bar fills (ex. <code>accent</code> is used to define the text color and fill color of the graphs in <code>plot_us</code> and <code>plot_day</code>).</p></li>
+<li><p>The naming convention is convenient because saving the colors as variables prevents having to constantly reference the hex codes throughout the script. Additionally, it makes the code easier to read, maintain, and update, since changing a color only requires editing it in one place rather than multiple locations.</p></li>
+</ul></li>
 <li><strong>In your own words, explain what the function, <code>font_add_google()</code>, does. What’s the difference between the two arguments, <code>name</code> and <code>family</code>?</strong></li>
 </ol>
 <ul>
@@ -578,7 +579,7 @@ Some notes before you get started
 <ol start="17" type="1">
 <li><p><strong>Why does the author render <code>plot.caption</code> using <code>ggtext::element_markdown()</code>, rather than <code>element_text()</code> (like he does for rendering <code>plot.title</code> and <code>text</code>)?</strong></p>
 <ul>
-<li>The author uses <code>ggtext::element_markdown()</code> for the <code>plot.caption</code> because the caption contains formatted text or specific text elements such as font icons and bold/italic text that may not be easily interpreted by <code>element_text()</code>. As such, using <code>ggtext::element_markdown()</code> is essentially for maintaining the correct format of the text elements.</li>
+<li>The author uses <code>ggtext::element_markdown()</code> for the <code>plot.caption</code> because the caption contains formatted text or specific text elements such as font icons and bold/italic text that may not be easily interpreted by <code>element_text()</code>. As such, using <code>ggtext::element_markdown()</code> is essential for maintaining the correct format of the text elements.</li>
 </ul></li>
 </ol>
 </section>
@@ -609,11 +610,12 @@ Some notes before you get started
 <ol start="18" type="1">
 <li><p><strong>Explain how <code>plot_final</code> is assembled. What do you think is the most challenging aspect of arranging all components into a single plot?</strong></p>
 <ul>
-<li>Here,</li>
+<li><p>Here, plot_final is assembled by establishing the base plot (<code>plot_base</code>) that provides the main title, subtitle, and caption, along with overall styling such as background color, fonts, and text size. Individual plot elements like <code>plot_shape</code>, <code>plot_us</code>, <code>plot_day</code>, and <code>plot_ufo</code>, as well as the text elements (<code>quote1</code>, <code>quote2</code>, <code>quote3</code>) are then added on as “layers” using <code>inset_element()</code>. Each “layer” specifies its position within the overall plot using coordinates (arguments <code>left</code>, <code>right</code>, <code>top</code>, and <code>bottom</code>) relative to the base plot. Finally, <code>plot_annotation()</code> is applied to set the overall background color referencing <code>bg</code>.</p></li>
+<li><p>Perhaps the most challenging aspect of arranging all components is managing the placement and sizing of multiple “layered” plots such that they do not overlap, are legible, and are balanced visually in the overall layout. Because the coordinates are manually set, testing individual positions is required to ensure that text, charts, and visualizations fit together appropriately and appear aesthetically pleasing.</p></li>
 </ul></li>
 <li><p><strong>Can you think of one reason the author may have chosen to separate the construction of <code>plot_base</code> and <code>plot_final</code>?</strong></p>
 <ul>
-<li>Answer here</li>
+<li>It was likely easier to separate <code>plot_base</code> and <code>plot_final</code> to keep the code organized and flexible, defining the overall styling and text once in <code>plot_base</code> and then focusing solely on arranging the individual plots and text elements in <code>plot_final</code>. By creating <code>plot_base</code> first, the author could establish the overall title, caption, and styling in a single reusable object. Then, <code>plot_final</code> could be used to focus solely on arranging<strong>/</strong>layering each individual plot without having to redefine the base style each time. As a result, this approach was more feasible and reproducible for styling and organizing individual elements of the infographic.</li>
 </ul></li>
 </ol>
 </section>
@@ -624,32 +626,32 @@ Some notes before you get started
 <ol type="a">
 <li><p><strong>What “perceptual tasks” (from Cleveland &amp; McGill’s heirarchy) must the viewer perform to extract information from these visualizations?</strong></p>
 <ul>
-<li>Answer here</li>
+<li>A viewer might perform some “perceptual tasks” to extract information from these visualizations. For example, the viewer could compare the position along a common, such as reading differences in time (hours to days) or interpreting the placement of elements within panels (University of Missouri-Saint Louis, n.d.). The user could also compare length and area (University of Missouri-Saint Louis, n.d.), such as judging the bar lengths or focusing on the “upper” edge of each bar to assess the total sightings per UFO shape. Another key task is comparing the color intensity or opacity, which requires judging differences in the transparency to infer higher or lower rates of total sightings over population over time.</li>
 </ul></li>
 <li><p><strong>What task(s) do you think the author wanted to enable or message(s) he wanted to convey with these visualizations (see lecture 2.1, slide 16 for examples)? Be sure to note at least one task / message for each of the three data viz.</strong></p>
 <ul>
-<li>Answer here</li>
+<li>I believe the author aimed to <u>visualize spatial patterns</u> in UFO sightings across states over time, using opacity in <code>plot_us</code> to represent differences in sightings per state. For <code>plot_shape</code>, I think the author wanted to <u>allow comparisons of the total number of sightings</u> for each UFO shape, highlighting which shape types were most numerous relative to the others. In <code>plot_day</code>, I believe the author wanted to <u>display temporal trends and highlight broader patterns</u> in UFO sightings across different hours of the day and days of the week.</li>
 </ul></li>
 <li><p><strong>Name at least one caveat to the “hierarchy of perceptual tasks” that the author employed to achieve a goal(s) you noted in question b?</strong></p>
 <ul>
-<li>Answer here</li>
+<li>Once caveat to the hierarchy of perceptual tasks is the author’s use of opacity (color intensity) to encode values. Encoding data with color is lower in the hierarchy and may be less precise than position or length. While opacity may be effective for showcasing overall patterns and highlighting areas of higher or lower activity, exact comparisons between values can be difficult. As such, viewers can find it difficult to correctly understand small differences in opacity, especially with smaller differences in total sightings between states in <code>plot_us</code>, for example.</li>
 </ul></li>
 </ol></li>
 <li><p><strong>Describe two elements of this piece that you find visually-pleasing / easy to understand / intuitive. Why?</strong></p>
 <ul>
-<li>Answer here</li>
+<li>One visually appealing aspect of this piece is the use titles to create a U.S. map and represent total UFO sightings by state, which makes the spatial distribution intuitive and helps readers easily connect sighting frequency with geographic location. This approach allows viewers to understand where sightings are most common across the country. Another element is the circular <code>plot_day</code>, which resembles a clock and helps viewers intuitively visualize when UFO sightings are most frequent throughout the day and across the week.</li>
 </ul></li>
 <li><p><strong>Describe two elements of this piece that you feel could be better presented in a different way. Why?</strong></p>
 <ul>
-<li>Answer here</li>
+<li>One element that could be presented differently is the clock-style visualization showing when UFO sightings occur. It can be confusing to see 12 AM labeled twice, and it would be clearer if 12 PM were labeled at the bottom instead. Additionally, the weekday labels are difficult to interpret because they are stacked closely together, which reduces readability. The opacity scale could also be improved, as the least frequently reported UFO shapes are too dark, making it harder to distinguish differences among the lower values.</li>
 </ul></li>
 <li><p><strong>Describe two new things that you learned by interpreting / annotating this code. These could be packages, functions, or even code organizational approaches that you hadn’t previously known about or considered.</strong></p>
 <ul>
-<li>Answer here</li>
+<li>One new thing I learned was how text and annotations can be treated as individual ggplot objects and then combined with other plots using functions like <code>inset_element()</code>. This approach to building more complex visualizations was unfamilar to me and showed how separating text and charts into individual components can make layout design more flexible and easier to manage. Another thing I learned was how opacity can be scaled for color intensity using functions like <code>scales::rescale()</code>. Seeing opacity used consistently across different plots to communicate the intensity of total sightings helped me better understand how aesthetic mapping can reinforce patterns without relying only on position or length.</li>
 </ul></li>
 <li><p><strong>How, if at all, did you use AI tools to help you interpret this code? Describe your approach to using these tools for this assignment. In what ways was consulting the documentation more (or less) helpful than using AI?</strong></p>
 <ul>
-<li>Answer here</li>
+<li>While AI was useful in understanding examples of applications of unfamiliar functions such as <code>inset_element()</code>, I found it easier to consult the documentation to better understand the definition of each function and its specific parameters. For example, I found myself consulting the documentation for <code>font_add_google()</code> to understand the difference between the <code>name</code> and <code>family</code> argument in its truest definition, while I asked AI to provide examples of different situations where <code>family</code> and <code>name</code> were not similar.</li>
 </ul></li>
 </ol>
 </section>

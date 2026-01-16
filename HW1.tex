@@ -1,0 +1,1232 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[normalem]{ulem}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[many]{tcolorbox}}
+\@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
+\definecolor{quarto-callout-color}{HTML}{909090}
+\definecolor{quarto-callout-note-color}{HTML}{0758E5}
+\definecolor{quarto-callout-important-color}{HTML}{CC1914}
+\definecolor{quarto-callout-warning-color}{HTML}{EB9113}
+\definecolor{quarto-callout-tip-color}{HTML}{00A047}
+\definecolor{quarto-callout-caution-color}{HTML}{FC5300}
+\definecolor{quarto-callout-color-frame}{HTML}{acacac}
+\definecolor{quarto-callout-note-color-frame}{HTML}{4582ec}
+\definecolor{quarto-callout-important-color-frame}{HTML}{d9534f}
+\definecolor{quarto-callout-warning-color-frame}{HTML}{f0ad4e}
+\definecolor{quarto-callout-tip-color-frame}{HTML}{02b875}
+\definecolor{quarto-callout-caution-color-frame}{HTML}{fd7e14}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[many]{tcolorbox}}
+\makeatother
+\makeatletter
+\@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
+\makeatother
+\makeatletter
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={HW \#1},
+  pdfauthor={Vedika Shirtekar},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{HW \#1}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Interpreting \texttt{\{ggplot2\}} code}
+\author{Vedika Shirtekar}
+\date{}
+
+\begin{document}
+\maketitle
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, breakable, boxrule=0pt, frame hidden, sharp corners, enhanced, borderline west={3pt}{0pt}{shadecolor}]}{\end{tcolorbox}}\fi
+
+\renewcommand*\contentsname{Table of contents}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-tip-color!10!white, colframe=quarto-callout-tip-color-frame, arc=.35mm, titlerule=0mm, left=2mm, bottomtitle=1mm, opacityback=0, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Some notes before you get started}, leftrule=.75mm, colback=white, coltitle=black, opacitybacktitle=0.6, rightrule=.15mm, bottomrule=.15mm, toprule=.15mm, breakable]
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Be sure to install any packages} in the Setup chunk that you
+  don't already have.
+\item
+  \textbf{Leave the code chunk options, \texttt{eval:\ false} and
+  \texttt{echo:\ true}, set as they are.} The final infographic has been
+  intentionally optimized (e.g., text size, spacing) for saving and
+  viewing as a PNG file, not for display in the Plots pane or within a
+  rendered Quarto document. As a result, the text in each individual
+  ggplot may appear too large when viewed in the Plots pane, but will be
+  correctly sized in the exported PNG. We'll talk more about the nuances
+  of saving ggplots (and why these differences occur) in a later lab
+  section.
+\item
+  Some answers may become clearer once you've looked ahead at the code
+  further down in the script. \textbf{Consider revisiting questions as
+  you go.}
+\end{itemize}
+
+\end{tcolorbox}
+
+\textbf{GitHub Repository Link:}
+\url{https://github.com/vedikaS-byte/Eds-240-hw1-ufo.git}
+
+\hypertarget{i.-setup}{%
+\subsection{I. Setup}\label{i.-setup}}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{library}\NormalTok{(colorspace)}
+\FunctionTok{library}\NormalTok{(geofacet) }
+\FunctionTok{library}\NormalTok{(ggtext) }
+\FunctionTok{library}\NormalTok{(glue) }
+\FunctionTok{library}\NormalTok{(grid)}
+\FunctionTok{library}\NormalTok{(magick)}
+\FunctionTok{library}\NormalTok{(patchwork) }
+\FunctionTok{library}\NormalTok{(scales) }
+\FunctionTok{library}\NormalTok{(showtext) }
+\FunctionTok{library}\NormalTok{(tidyverse) }
+
+\NormalTok{ufo\_sightings }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{\textquotesingle{}https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2023/2023{-}06{-}20/ufo\_sightings.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{places }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{\textquotesingle{}https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2023/2023{-}06{-}20/places.csv\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{alien }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"\#101319"}\NormalTok{, }\StringTok{"\#28ee85"}\NormalTok{)}
+\NormalTok{bg }\OtherTok{\textless{}{-}}\NormalTok{ alien[}\DecValTok{1}\NormalTok{]}
+\NormalTok{accent }\OtherTok{\textless{}{-}}\NormalTok{ alien[}\DecValTok{2}\NormalTok{]}
+
+\NormalTok{ufo\_image }\OtherTok{\textless{}{-}}\NormalTok{ magick}\SpecialCharTok{::}\FunctionTok{image\_read}\NormalTok{(}\AttributeTok{path =}\NormalTok{ here}\SpecialCharTok{::}\FunctionTok{here}\NormalTok{(}\StringTok{"MEDS"}\NormalTok{, }\StringTok{"eds{-}240"}\NormalTok{,}\StringTok{"Eds{-}240{-}hw1{-}ufo"}\NormalTok{ , }\StringTok{"images"}\NormalTok{, }\StringTok{"ufo.png"}\NormalTok{)) }
+
+\NormalTok{sysfonts}\SpecialCharTok{::}\FunctionTok{font\_add\_google}\NormalTok{(}\AttributeTok{name =} \StringTok{"Orbitron"}\NormalTok{, }\AttributeTok{family =} \StringTok{"orb"}\NormalTok{)}
+\NormalTok{sysfonts}\SpecialCharTok{::}\FunctionTok{font\_add\_google}\NormalTok{(}\AttributeTok{name =} \StringTok{"Barlow"}\NormalTok{, }\AttributeTok{family =} \StringTok{"bar"}\NormalTok{)}
+
+\NormalTok{sysfonts}\SpecialCharTok{::}\FunctionTok{font\_add}\NormalTok{(}\AttributeTok{family =} \StringTok{"fa{-}brands"}\NormalTok{, }\AttributeTok{regular =}\NormalTok{ here}\SpecialCharTok{::}\FunctionTok{here}\NormalTok{(}\StringTok{"MEDS"}\NormalTok{, }\StringTok{"eds{-}240"}\NormalTok{,}\StringTok{"Eds{-}240{-}hw1{-}ufo"}\NormalTok{,}\StringTok{"fonts"}\NormalTok{, }\StringTok{"Font Awesome 6 Free{-}Regular{-}400.otf"}\NormalTok{))}
+\NormalTok{sysfonts}\SpecialCharTok{::}\FunctionTok{font\_add}\NormalTok{(}\AttributeTok{family =} \StringTok{"fa{-}solid"}\NormalTok{, }\AttributeTok{regular =}\NormalTok{ here}\SpecialCharTok{::}\FunctionTok{here}\NormalTok{(}\StringTok{"MEDS"}\NormalTok{, }\StringTok{"eds{-}240"}\NormalTok{,}\StringTok{"Eds{-}240{-}hw1{-}ufo"}\NormalTok{, }\StringTok{"fonts"}\NormalTok{, }\StringTok{"Font Awesome 6 Free{-}Solid{-}900.otf"}\NormalTok{))}
+
+\NormalTok{showtext}\SpecialCharTok{::}\FunctionTok{showtext\_auto}\NormalTok{(}\AttributeTok{enable =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{What is the author defining in lines 15-17? Where else in the
+  code do these defined variables show up? What advantage(s) is there to
+  defining these values here, as variables, rather than defining the
+  values directly throughout the script?}
+
+  \begin{itemize}
+  \item
+    In lines 15-17, a color palette is defined with hex codes for
+    background (black) and accent (green) colors in the UFO visual. Each
+    color is subset by index and assigned to a variable that is
+    referenced for a specific use. For example, \texttt{bg} contains the
+    black background color for the visual, which is referred to in the
+    aesthetics for constructing the plot background fill and base color,
+    such as in \texttt{plot\_us} and the text color for
+    \texttt{plot\_shape}. The \texttt{accent} variable refers to the
+    light green color primarily used for text color and the fill of
+    graph aesthetics, such as bar fills (ex. \texttt{accent} is used to
+    define the text color and fill color of the graphs in
+    \texttt{plot\_us} and \texttt{plot\_day}).
+  \item
+    The naming convention is convenient because saving the colors as
+    variables prevents having to constantly reference the hex codes
+    throughout the script. Additionally, it makes the code easier to
+    read, maintain, and update, since changing a color only requires
+    editing it in one place rather than multiple locations.
+  \end{itemize}
+\item
+  \textbf{In your own words, explain what the function,
+  \texttt{font\_add\_google()}, does. What's the difference between the
+  two arguments, \texttt{name} and \texttt{family}?}
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{font\_add\_google()} is a function from the \texttt{sysfonts}
+  package that downloads font files from the Google Fonts repository and
+  registers them so they can be used in R graphics. The function
+  searches for a font using its official Google Fonts name, downloads
+  the necessary files, and makes the font available for plotting. The
+  \texttt{name} argument specifies the exact Google Fonts name used to
+  identify the preferred font. The \texttt{family} argument defines the
+  font family name used within R, which acts as an internal label
+  referenced by plotting functions, such as ggplot2. While
+  \texttt{family} can be any string and does not need to match
+  \texttt{name}, it is the value that can be later used when specifying
+  the font in plots.
+\end{itemize}
+
+\hypertarget{ii.-data-wrangling}{%
+\subsection{II. Data wrangling}\label{ii.-data-wrangling}}
+
+\hypertarget{i.-create-df_pop}{%
+\subsubsection{\texorpdfstring{i. Create
+\texttt{df\_pop}}{i. Create df\_pop}}\label{i.-create-df_pop}}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{df\_pop }\OtherTok{\textless{}{-}}\NormalTok{ places }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{filter}\NormalTok{(country\_code }\SpecialCharTok{==} \StringTok{"US"}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{state =} \FunctionTok{str\_replace}\NormalTok{(}\AttributeTok{string =}\NormalTok{ state,}
+                             \AttributeTok{pattern =} \StringTok{"Fl"}\NormalTok{,}
+                             \AttributeTok{replacement =} \StringTok{"FL"}\NormalTok{)) }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{group\_by}\NormalTok{(state) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{pop =} \FunctionTok{sum}\NormalTok{(population)) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{ungroup}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\item
+  \textbf{Describe what this data frame contains.}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    This data frame contains aggregated population data for the United
+    States at the state level (grouped by state). The \texttt{df\_pop}
+    data set is created by filtering the \texttt{places} data set to
+    include only records from the U.S., setting the state abbreviation
+    for Florida, and then grouping the data by state. For each state,
+    the population values of all places are summed to calculate the
+    total state population. The finalized data frame has one observation
+    per state with a column for the \texttt{state} abbreviation and a
+    column for the total population (\texttt{pop}).
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{ii.-create-df_us}{%
+\subsubsection{\texorpdfstring{ii. Create
+\texttt{df\_us}}{ii. Create df\_us}}\label{ii.-create-df_us}}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{df\_us }\OtherTok{\textless{}{-}}\NormalTok{ ufo\_sightings }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{filter}\NormalTok{(country\_code }\SpecialCharTok{==} \StringTok{"US"}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{state =} \FunctionTok{str\_replace}\NormalTok{(}\AttributeTok{string =}\NormalTok{ state,}
+                             \AttributeTok{pattern =} \StringTok{"Fl"}\NormalTok{,}
+                             \AttributeTok{replacement =} \StringTok{"FL"}\NormalTok{)) }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{count}\NormalTok{(state) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{left\_join}\NormalTok{(df\_pop, }\AttributeTok{by =} \StringTok{"state"}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{num\_obs =}\NormalTok{ n) }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{num\_obs\_per10k =}\NormalTok{ num\_obs }\SpecialCharTok{/}\NormalTok{ pop }\SpecialCharTok{*} \DecValTok{10000}\NormalTok{,}
+    \AttributeTok{opacity\_val =}\NormalTok{ num\_obs\_per10k }\SpecialCharTok{/} \FunctionTok{max}\NormalTok{(num\_obs\_per10k)}
+\NormalTok{    )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\item
+  \textbf{Describe what this data frame contains.}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The \texttt{df\_us} data frame contains the summarized UFO sighting
+    information at the state level (including Washington DC). The data
+    frame includes the total number of reported UFO sightings
+    (\texttt{num\_obs}), the state's total population (\texttt{pop}),
+    and a normalized rate of sightings per 10,000 people
+    (\texttt{num\_obs\_per10k}). \texttt{opacity\_val} contains the
+    scaled sightings rate relative to the maximum observed rate of
+    sightings per state.
+  \end{itemize}
+\item
+  \textbf{What does \texttt{opacity\_val} represent, and why is it
+  calculated?}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{opacity\_val} represents the scaled measure of UFO sightings
+    rate or frequency relative to the maximum observed rate of sightings
+    per state with a range between 0 and 1. \texttt{opacity\_val} is
+    calculated by dividing each state's sightings per 10,000 people
+    (\texttt{num\_obs\_per10k}) by the maximum value of
+    \texttt{num\_obs\_per10k} across all states. This variable was
+    calculated for visualization purposes, such as mapping
+    \texttt{opacity\_val} to transparency (\texttt{alpha}) in a plot or
+    map. With this aesthetic, states with a higher rate of UFO sightings
+    would appear lighter, while states with lower rates would appear
+    darker. By mapping \texttt{opacity\_val} to adjust for transparency
+    in a ggplot object, it is easier to visually compare relative
+    sighting intensity across states.
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{iii.-create-df_shape}{%
+\subsubsection{\texorpdfstring{iii. Create
+\texttt{df\_shape}}{iii. Create df\_shape}}\label{iii.-create-df_shape}}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{df\_shape }\OtherTok{\textless{}{-}}\NormalTok{ ufo\_sightings }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\NormalTok{shape }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"unknown"}\NormalTok{, }\StringTok{"other"}\NormalTok{)) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{count}\NormalTok{(shape) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{total\_sightings =}\NormalTok{ n) }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(total\_sightings)) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{slice\_head}\NormalTok{(}\AttributeTok{n =} \DecValTok{10}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{shape =} \FunctionTok{fct\_reorder}\NormalTok{(}\AttributeTok{.f =}\NormalTok{ shape, }
+                        \AttributeTok{.x =}\NormalTok{ total\_sightings), }
+    \AttributeTok{opacity\_val =}\NormalTok{ scales}\SpecialCharTok{::}\FunctionTok{rescale}\NormalTok{(}\AttributeTok{x =}\NormalTok{ total\_sightings, }
+                                  \AttributeTok{to =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.3}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+\NormalTok{    )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\item
+  \textbf{Describe what this data frame contains.}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{df\_shape} contains the total sightings of each differently
+    shaped UFO, summarizing the top ten most commonly reported UFO
+    shapes. The number of total sightings are arranged in descending
+    order, and vague shapes (eg., ``unknown and''other'') are excluded
+    from the data frame. \texttt{opacity\_val} rescales the total number
+    of sightings to a range between 0.3 and 1.
+  \end{itemize}
+\item
+  \textbf{What does \texttt{fct\_reorder} do when it is applied to the
+  \texttt{shape} variable? What would have happened if this step was not
+  performed?}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{fct\_reorder()} reorders the levels of the \texttt{shape}
+    factor based on the values of \texttt{total\_sightings}. The UFO
+    shape categories are arranged in order of decreasing frequency
+    rather than remaining in the default or alphabetical order, ensuring
+    that when plotted, the shapes appear in a meaningful order that
+    reflects how common each shape is (ex. plotting each level in
+    descending order rather than alphabetically). Without reordering the
+    levels in the \texttt{shape} factor, the \texttt{shape} variable
+    would remain in its original ordering, and the plot using
+    \texttt{shape} on its respective access would display the categories
+    in a nonsensical numerical order; it would be harder to visually
+    interpret and compare the frequency of different UFO shapes.
+  \end{itemize}
+\item
+  \textbf{What is the purpose of rescaling \texttt{opacity\_val}? And
+  why rescale from 0.3 to 1?}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{opacity\_val} was rescaled to convert the actual counts of
+    UFO sightings into values that can be utilized directly for
+    visualization. More specifically, opacity\_val can be utilized in
+    the \texttt{alpha} argument of \texttt{ggplot} functions to
+    represent the scale of ``emphasis'' on overall sightings per UFO
+    shape type. Rescaling from 0.3 to 1 ensures that all shapes remain
+    visible while still highlighting differences in frequency. For
+    example, if the lower bound were 0 or close to 0, then shapes with
+    fewer sightings (or very close to it), would become too dark to spot
+    in a plot. By setting the minimum opacity to 0.3, the least common
+    shapes are still easy to see. The upper bound of 1 allows the most
+    frequently reported shapes to be fully colored and stand out more
+    clearly. making them stand out clearly. This range strikes a balance
+    between readability and visual emphasis in the visualization.
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{iv.-create-df_day_hour}{%
+\subsubsection{\texorpdfstring{iv. Create
+\texttt{df\_day\_hour}}{iv. Create df\_day\_hour}}\label{iv.-create-df_day_hour}}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{df\_day\_hour }\OtherTok{\textless{}{-}}\NormalTok{ ufo\_sightings }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{day =} \FunctionTok{wday}\NormalTok{(reported\_date\_time), }
+    \AttributeTok{hour =} \FunctionTok{hour}\NormalTok{(reported\_date\_time), }
+    \AttributeTok{wday =} \FunctionTok{wday}\NormalTok{(reported\_date\_time, }\AttributeTok{label =} \ConstantTok{TRUE}\NormalTok{) }
+\NormalTok{  ) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{count}\NormalTok{(day, wday, hour) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{total\_daily\_obs =}\NormalTok{ n) }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{opacity\_val =}\NormalTok{ total\_daily\_obs }\SpecialCharTok{/} \FunctionTok{max}\NormalTok{(total\_daily\_obs),}
+    \AttributeTok{hour\_lab =} \FunctionTok{case\_when}\NormalTok{(}
+\NormalTok{      hour }\SpecialCharTok{==} \DecValTok{0} \SpecialCharTok{\textasciitilde{}} \StringTok{"12am"}\NormalTok{,}
+\NormalTok{      hour }\SpecialCharTok{\textless{}=} \DecValTok{12} \SpecialCharTok{\textasciitilde{}} \FunctionTok{paste0}\NormalTok{(hour, }\StringTok{"am"}\NormalTok{),}
+\NormalTok{      hour }\SpecialCharTok{==} \DecValTok{12} \SpecialCharTok{\textasciitilde{}} \StringTok{"12pm"}\NormalTok{,}
+      \ConstantTok{TRUE} \SpecialCharTok{\textasciitilde{}} \FunctionTok{paste0}\NormalTok{(hour }\SpecialCharTok{{-}} \DecValTok{12}\NormalTok{, }\StringTok{"pm"}\NormalTok{)) }
+\NormalTok{    )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{8}
+\item
+  \textbf{Describe what this data frame contains.}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{df\_day\_hour} contains the total daily observations and
+    scaled opacity for UFO sightings by day of the week and hour of the
+    day. For each combination of day and hour, \texttt{df\_day\_hour}
+    records the total number of sightings (\texttt{total\_daily\_obs})
+    and a scaled value (\texttt{opacity\_val}) that indicates the
+    relative intensity of sightings for visualization purposes.
+  \end{itemize}
+\item
+  \textbf{What is the purpose of the last line inside the
+  \texttt{case\_when()} statement
+  (\texttt{TRUE\ \textasciitilde{}\ paste0(hour\ -\ 12,\ "pm")})?}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The last line in the \texttt{case\_when()} statement
+    \texttt{(TRUE\ \textasciitilde{}\ paste0(hour\ -\ 12,\ "pm"))}
+    converts hours greater than 12 from 24-hour time to 12-hour PM
+    format such that every hour has a readable label
+    (\texttt{hour\_lab}).
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{iii.-prepare-text-elements}{%
+\subsection{III. Prepare text
+elements}\label{iii.-prepare-text-elements}}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{quotes }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(}\StringTok{\textquotesingle{}"...\textquotesingle{}}\NormalTok{, }\FunctionTok{str\_to\_sentence}\NormalTok{(ufo\_sightings}\SpecialCharTok{$}\NormalTok{summary[}\FunctionTok{c}\NormalTok{(}\DecValTok{47816}\NormalTok{, }\DecValTok{6795}\NormalTok{, }\DecValTok{93833}\NormalTok{)]), }\StringTok{\textquotesingle{}..."\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{original }\OtherTok{\textless{}{-}} \FunctionTok{glue}\NormalTok{(}\StringTok{"Original visualization by Dan Oehm:"}\NormalTok{)}
+\NormalTok{dan\_github }\OtherTok{\textless{}{-}} \FunctionTok{glue}\NormalTok{(}\StringTok{"\textless{}span style=\textquotesingle{}font{-}family:fa{-}brands;\textquotesingle{}\textgreater{}\&\#xf09b;\textless{}/span\textgreater{} doehm/tidytues"}\NormalTok{)}
+\NormalTok{new }\OtherTok{\textless{}{-}} \FunctionTok{glue}\NormalTok{(}\StringTok{"Updated version by Sam Shanny{-}Csik for EDS 240:"}\NormalTok{)}
+\NormalTok{link }\OtherTok{\textless{}{-}} \FunctionTok{glue}\NormalTok{(}\StringTok{"\textless{}span style=\textquotesingle{}font{-}family:fa{-}solid;\textquotesingle{}\textgreater{}\&\#xf0c1;\textless{}/span\textgreater{} eds{-}240{-}data{-}viz.github.io"}\NormalTok{)}
+\NormalTok{space }\OtherTok{\textless{}{-}} \FunctionTok{glue}\NormalTok{(}\StringTok{"\textless{}span style=\textquotesingle{}color:\{bg\};\textquotesingle{}\textgreater{}. .\textless{}/span\textgreater{}"}\NormalTok{)}
+\NormalTok{caption }\OtherTok{\textless{}{-}} \FunctionTok{glue}\NormalTok{(}\StringTok{"\{original\}\{space\}\{dan\_github\}}
+\StringTok{                \textless{}br\textgreater{}\textless{}br\textgreater{}}
+\StringTok{                \{new\}\{space\}\{link\}"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{10}
+\item
+  \textbf{In your own words, what is the difference between
+  \texttt{paste0()} and \texttt{glue()}? Why did the author use
+  \texttt{paste0} to construct \texttt{quotes} and \texttt{glue} to
+  construct the other text elements?}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The difference between \texttt{paste0()} and \texttt{glue()} is
+    defined in how both functions handle combining text with variables.
+    \texttt{paste0()} concatenates strings and values without
+    considering variable names inside the string; this is suitable for
+    straightforwardly combining fixed text and data. As observed in
+    \texttt{quotes}, the author utilized \texttt{paste0()} to add a
+    prefix and suffix of ``\ldots{}'' around the selected summary
+    sentences in \texttt{ufo\_sightings}. \texttt{glue()} allows the
+    author to write a string with variable placeholders that are
+    automatically replaced with their respective values, allowing it to
+    be cleaner and easier to use for formatted text. The author used
+    \texttt{paste0()} for \texttt{quotes} because the task was simple
+    concatenation (strings tied to a subsetted part of the data frame),
+    while \texttt{glue()} was used for the other elements to make the
+    code cleaner and easier to read when building formatted strings
+    (using \texttt{\{variable\}}).
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{iv.-build-plots}{%
+\subsection{IV. Build plots}\label{iv.-build-plots}}
+
+\hypertarget{i.-build-plot_shape}{%
+\subsubsection{\texorpdfstring{i. Build
+\texttt{plot\_shape}}{i. Build plot\_shape}}\label{i.-build-plot_shape}}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{plot\_shape }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_shape) }\SpecialCharTok{+}
+  \FunctionTok{geom\_col}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ total\_sightings, }\AttributeTok{y =}\NormalTok{ shape, }\AttributeTok{alpha =}\NormalTok{ opacity\_val), }
+           \AttributeTok{fill =}\NormalTok{ accent) }\SpecialCharTok{+}
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \DecValTok{200}\NormalTok{, }\AttributeTok{y =}\NormalTok{ shape, }\AttributeTok{label =} \FunctionTok{str\_to\_title}\NormalTok{(shape)), }
+            \AttributeTok{family =} \StringTok{"orb"}\NormalTok{, }
+            \AttributeTok{fontface =} \StringTok{"bold"}\NormalTok{,}
+            \AttributeTok{color =}\NormalTok{ bg, }
+            \AttributeTok{size =} \DecValTok{14}\NormalTok{, }
+            \AttributeTok{hjust =} \DecValTok{0}\NormalTok{,}
+            \AttributeTok{nudge\_y =} \FloatTok{0.2}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ total\_sightings}\DecValTok{{-}200}\NormalTok{, }\AttributeTok{y =}\NormalTok{ shape, }\AttributeTok{label =}\NormalTok{ scales}\SpecialCharTok{::}\FunctionTok{comma}\NormalTok{(total\_sightings)),}
+            \AttributeTok{family =} \StringTok{"orb"}\NormalTok{,}
+            \AttributeTok{fontface =} \StringTok{"bold"}\NormalTok{,}
+            \AttributeTok{color =}\NormalTok{ bg,}
+            \AttributeTok{size =} \DecValTok{10}\NormalTok{,}
+            \AttributeTok{hjust =} \DecValTok{1}\NormalTok{,}
+            \AttributeTok{nudge\_y =} \SpecialCharTok{{-}}\FloatTok{0.2}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{expand =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\ConstantTok{NA}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{subtitle =} \StringTok{"10 most commonly reported shapes"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_void}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{plot.subtitle =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{family =} \StringTok{"bar"}\NormalTok{, }
+                                 \AttributeTok{size =} \DecValTok{40}\NormalTok{, }
+                                 \AttributeTok{color =}\NormalTok{ accent,}
+                                 \AttributeTok{hjust =} \DecValTok{0}\NormalTok{,  }
+                                 \AttributeTok{margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{b =} \DecValTok{10}\NormalTok{)),}
+    \AttributeTok{legend.position =} \StringTok{"none"} 
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{11}
+\item
+  \textbf{Explain the values provided to the \texttt{x} aesthetic for
+  both text geoms (\texttt{shape} \& \texttt{total\_sightings}).}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    In \texttt{plot\_shape}, the x values for the two
+    \texttt{geom\_text()} layers control the horizontal placement of the
+    text relative to the bars. The first \texttt{geom\_text()} labels
+    the \texttt{shape} names, and \texttt{x\ =\ 200} sets a fixed
+    position on the x-axis such that all the shape names appear aligned
+    to the left of the horizontal bars. In the second
+    \texttt{geom\_text()}, the \texttt{x} aesthetic is assigned to
+    display the total sightings per UFO shape
+    (\texttt{total\_sightings}); \texttt{x\ =\ total\_sightings\ -\ 200}
+    places the text for the number of total sightings at the end of each
+    bar's length.
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{ii.-build-plot_us}{%
+\subsubsection{\texorpdfstring{ii. Build
+\texttt{plot\_us}}{ii. Build plot\_us}}\label{ii.-build-plot_us}}
+
+\textbf{HINT:} Consider temporarily commenting out / rearranging the
+\texttt{geom\_*()} layers to better understand how this plot is
+constructed
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{plot\_us }\OtherTok{\textless{}{-}}  \FunctionTok{ggplot}\NormalTok{(df\_us) }\SpecialCharTok{+}
+  \FunctionTok{geom\_rect}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{xmin =} \DecValTok{0}\NormalTok{, }\AttributeTok{xmax =} \DecValTok{1}\NormalTok{, }\AttributeTok{ymin =} \DecValTok{0}\NormalTok{, }\AttributeTok{ymax =} \DecValTok{1}\NormalTok{, }\AttributeTok{alpha =}\NormalTok{ opacity\_val), }
+            \AttributeTok{fill =}\NormalTok{ accent) }\SpecialCharTok{+}
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{y =} \FloatTok{0.7}\NormalTok{, }\AttributeTok{label =}\NormalTok{ state), }
+            \AttributeTok{family =} \StringTok{"orb"}\NormalTok{, }
+            \AttributeTok{fontface =} \StringTok{"bold"}\NormalTok{,}
+            \AttributeTok{size =} \DecValTok{9}\NormalTok{, }
+            \AttributeTok{color =}\NormalTok{ bg) }\SpecialCharTok{+}
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{y =} \FloatTok{0.3}\NormalTok{, }\AttributeTok{label =} \FunctionTok{round}\NormalTok{(num\_obs\_per10k, }\DecValTok{1}\NormalTok{)), }
+            \AttributeTok{family =} \StringTok{"orb"}\NormalTok{, }
+            \AttributeTok{fontface =} \StringTok{"bold"}\NormalTok{,}
+            \AttributeTok{size =} \DecValTok{8}\NormalTok{, }
+            \AttributeTok{color =}\NormalTok{ bg) }\SpecialCharTok{+}  
+\NormalTok{  geofacet}\SpecialCharTok{::}\FunctionTok{facet\_geo}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{state) }\SpecialCharTok{+}
+  \FunctionTok{coord\_fixed}\NormalTok{(}\AttributeTok{ratio =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{subtitle =} \StringTok{"Sightings per 10k population"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_void}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{strip.text =} \FunctionTok{element\_blank}\NormalTok{(),}
+    \AttributeTok{plot.subtitle =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{family =} \StringTok{"bar"}\NormalTok{, }
+                                 \AttributeTok{size =} \DecValTok{40}\NormalTok{, }
+                                 \AttributeTok{color =}\NormalTok{ accent,}
+                                 \AttributeTok{hjust =} \DecValTok{1}\NormalTok{,  }
+                                 \AttributeTok{margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{b =} \DecValTok{10}\NormalTok{)),}
+    \AttributeTok{legend.position =} \StringTok{"none"} 
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{12}
+\item
+  \textbf{Consider the order of \texttt{geom\_*()} layers in the the
+  above plot (\texttt{plot\_us}). Why did the author order the layers in
+  this way?}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    In \texttt{plot\_us}, the order of the \texttt{geom\_*()} layers is
+    intentional because ggplot draws layers in the order they are added,
+    where earlier layers appear underneath later ones. The first layer
+    is \texttt{geom\_rect()}, which created the colored rectangle for
+    each facet to serve as a background representing the opacity of UFO
+    sightings. By placing it first, the rectangles appear behind all
+    proceeding elements. The state labels can then be added onto the
+    plot and faceted by state, adding the state labels and the sightings
+    per 10,000 state residents on top of the rectangles. By drawing the
+    text after the background is established, the labels will be clearly
+    visible and readable. If the order were reversed and the rectangles
+    were drawn after the text, then the text would be hidden and
+    difficult to interpret.
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{iii.-build-plot_day}{%
+\subsubsection{\texorpdfstring{iii. Build
+\texttt{plot\_day}}{iii. Build plot\_day}}\label{iii.-build-plot_day}}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{plot\_day }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df\_day\_hour) }\SpecialCharTok{+}
+  \FunctionTok{geom\_tile}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ hour, }\AttributeTok{y =}\NormalTok{ day, }\AttributeTok{alpha =}\NormalTok{ opacity\_val), }
+            \AttributeTok{fill =}\NormalTok{ accent, }
+            \AttributeTok{height =} \FloatTok{0.9}\NormalTok{, }
+            \AttributeTok{width =} \FloatTok{0.9}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ hour, }\AttributeTok{y =} \DecValTok{9}\NormalTok{, }\AttributeTok{label =}\NormalTok{ hour\_lab), }
+            \AttributeTok{family =} \StringTok{"orb"}\NormalTok{,}
+            \AttributeTok{color =}\NormalTok{ accent, }
+            \AttributeTok{size =} \DecValTok{10}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \DecValTok{0}\NormalTok{, }\AttributeTok{y =}\NormalTok{ day, }\AttributeTok{label =} \FunctionTok{str\_sub}\NormalTok{(}\AttributeTok{string =}\NormalTok{ wday, }\AttributeTok{start =} \DecValTok{1}\NormalTok{, }\AttributeTok{end =} \DecValTok{1}\NormalTok{)), }
+            \AttributeTok{family =} \StringTok{"orb"}\NormalTok{, }
+            \AttributeTok{fontface =} \StringTok{"bold"}\NormalTok{,}
+            \AttributeTok{color =}\NormalTok{ bg, }
+            \AttributeTok{size =} \DecValTok{8}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{ylim}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlim}\NormalTok{(}\ConstantTok{NA}\NormalTok{, }\FloatTok{23.55}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{coord\_polar}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme\_void}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{plot.background =} \FunctionTok{element\_rect}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ , }\AttributeTok{color =}\NormalTok{ bg),}
+    \AttributeTok{legend.position =} \StringTok{"none"}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{13}
+\item
+  \textbf{This plot includes one-letter labels for each day of the week.
+  How is this accomplished when week days are written using their
+  three-letter abbreviations (e.g.~\texttt{Mon}, \texttt{Tue}) in the
+  \texttt{df\_day\_hour} data frame?}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The one-letter weekday labels are created by extracting the first
+    letter of the three-letter weekday abbreviations in the
+    \texttt{wday} column. This is done in \texttt{geom\_text()} with
+    \texttt{label\ =\ str\_sub(string\ =\ wday,\ start\ =\ 1,\ end\ =\ 1)},
+    which takes only the first character of each weekday (ex. ``M'' from
+    ``Mon'', ``T'' from ``Tue'', etc.) to display as a single-letter
+    label on the plot.
+  \end{itemize}
+\item
+  \textbf{What role do the \texttt{ylim()} and \texttt{xlim()} functions
+  play in shaping a ggplot, and how do they change the visual layout of
+  this particular plot? To better understand their effect, try rerunning
+  the code with each of these lines commented out and observe how the
+  plot's spacing and composition change.}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    In ggplot, the \texttt{xlim()} and \texttt{ylim()} functions set
+    specific limits on the x and y axes, controlling the range of values
+    that are displayed and influencing the spacing of plot elements. In
+    \texttt{plot\_day}, the polar coordinate system is used, so limits
+    are set for shaping a circular layout. The \texttt{ylim(-5,\ 9)}
+    extends the y-axis beyond the range of the day labels, creating
+    space for the one-letter weekday labels and hour labels such that
+    they do not overlap with the tiles. \texttt{xlim(NA,\ 23.55)}
+    slightly extends the x-axis beyond the maximum hour (12 AM) to
+    ensure that the 12 AM hour tile and its label are visible. Without
+    these limits, the axes auto scale to the data frame, causing text
+    labels to overlap or collide with the tile; the overall circular
+    layout becomes cramped.
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{iv.-build-quotes}{%
+\subsubsection{\texorpdfstring{iv. Build
+\texttt{quote*}s}{iv. Build quote*s}}\label{iv.-build-quotes}}
+
+A comment from Dan Oehm's original code: ``A bit clunky but the path of
+least resistance.''
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{quote1 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{annotate}\NormalTok{(}\AttributeTok{geom =}\StringTok{"text"}\NormalTok{, }
+           \AttributeTok{x =} \DecValTok{0}\NormalTok{, }
+           \AttributeTok{y =} \DecValTok{1}\NormalTok{, }
+           \AttributeTok{label =} \FunctionTok{str\_wrap}\NormalTok{(}\AttributeTok{string =}\NormalTok{ quotes[}\DecValTok{1}\NormalTok{], }\AttributeTok{width =} \DecValTok{40}\NormalTok{),}
+           \AttributeTok{family =} \StringTok{"bar"}\NormalTok{, }
+           \AttributeTok{fontface =} \StringTok{"italic"}\NormalTok{, }
+           \AttributeTok{color =}\NormalTok{ accent, }
+           \AttributeTok{size =} \DecValTok{16}\NormalTok{, }
+           \AttributeTok{hjust =} \DecValTok{0}\NormalTok{, }
+           \AttributeTok{lineheight =} \FloatTok{0.4}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlim}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylim}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_void}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{coord\_cartesian}\NormalTok{(}\AttributeTok{clip =} \StringTok{"off"}\NormalTok{)}
+
+\NormalTok{quote2 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{annotate}\NormalTok{(}\AttributeTok{geom =} \StringTok{"text"}\NormalTok{, }
+           \AttributeTok{x =} \DecValTok{0}\NormalTok{, }
+           \AttributeTok{y =} \DecValTok{1}\NormalTok{, }
+           \AttributeTok{label =} \FunctionTok{str\_wrap}\NormalTok{(}\AttributeTok{string =}\NormalTok{ quotes[}\DecValTok{2}\NormalTok{], }\AttributeTok{width =} \DecValTok{25}\NormalTok{),}
+           \AttributeTok{family =} \StringTok{"bar"}\NormalTok{, }
+           \AttributeTok{fontface =} \StringTok{"italic"}\NormalTok{,}
+           \AttributeTok{color =}\NormalTok{ accent, }
+           \AttributeTok{size =} \DecValTok{16}\NormalTok{, }
+           \AttributeTok{hjust =} \DecValTok{0}\NormalTok{,  }
+           \AttributeTok{lineheight =} \FloatTok{0.4}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlim}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylim}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_void}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{coord\_cartesian}\NormalTok{(}\AttributeTok{clip =} \StringTok{"off"}\NormalTok{)}
+
+\NormalTok{quote3 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{annotate}\NormalTok{(}\AttributeTok{geom =} \StringTok{"text"}\NormalTok{, }
+           \AttributeTok{x =} \DecValTok{0}\NormalTok{, }
+           \AttributeTok{y =} \DecValTok{1}\NormalTok{, }
+           \AttributeTok{label =} \FunctionTok{str\_wrap}\NormalTok{(}\AttributeTok{string =}\NormalTok{ quotes[}\DecValTok{3}\NormalTok{], }\AttributeTok{width =} \DecValTok{25}\NormalTok{),}
+           \AttributeTok{family =} \StringTok{"bar"}\NormalTok{, }
+           \AttributeTok{fontface =} \StringTok{"italic"}\NormalTok{,}
+           \AttributeTok{color =}\NormalTok{ accent, }
+           \AttributeTok{size =} \DecValTok{16}\NormalTok{, }
+           \AttributeTok{hjust =} \DecValTok{0}\NormalTok{,  }
+           \AttributeTok{lineheight =} \FloatTok{0.4}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlim}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylim}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_void}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{coord\_cartesian}\NormalTok{(}\AttributeTok{clip =} \StringTok{"off"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{15}
+\item
+  \textbf{Why do you think the author chose to convert these text
+  elements (and also in \texttt{plot\_ufo}, below!) into ggplot objects
+  (you may consider returning to this question after you've worked your
+  way through all of the code)?}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The author likely converted these text elements into separate ggplot
+    objects so they could be treated as regular plots and integrated
+    more feasibly into the final infographic as visual components of the
+    same \texttt{geom}* type. By making each quote its own ggplot, each
+    \texttt{quote} can be arranged together using other packages like
+    \texttt{patchwork} onto the same panel. This allows for easier
+    control over styling aesthetics, such as font, color, size, and
+    alignment of each individual \texttt{quote}; there is a greater
+    control over layout and formatting with the converted text elements.
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{v.-build-plot_ufo}{%
+\subsubsection{\texorpdfstring{v. Build
+\texttt{plot\_ufo}}{v. Build plot\_ufo}}\label{v.-build-plot_ufo}}
+
+\textbf{Note:} Grob stands for \textbf{gr}aphical \textbf{ob}ject. Each
+visual element rendered in a a ggplot (e.g.~lines, points, axes, entire
+panels, even images) is represented as a grob. Grobs can be manipulated
+individually to fully customize plots.
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{plot\_ufo }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{annotation\_custom}\NormalTok{(grid}\SpecialCharTok{::}\FunctionTok{rasterGrob}\NormalTok{(ufo\_image)) }\SpecialCharTok{+}
+  \FunctionTok{theme\_void}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{plot.background =} \FunctionTok{element\_rect}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ bg, }\AttributeTok{color =}\NormalTok{ bg) }
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{vi.-build-plot_base}{%
+\subsubsection{\texorpdfstring{vi. Build
+\texttt{plot\_base}}{vi. Build plot\_base}}\label{vi.-build-plot_base}}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{plot\_base }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"UFO Sightings"}\NormalTok{,}
+    \AttributeTok{subtitle =} \StringTok{"Summary of over 88k reported sightings across the US"}\NormalTok{,}
+    \AttributeTok{caption =}\NormalTok{ caption}
+\NormalTok{    ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_void}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{text =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{family =} \StringTok{"orb"}\NormalTok{, }
+                        \AttributeTok{size =} \DecValTok{48}\NormalTok{, }
+                        \AttributeTok{lineheight =} \FloatTok{0.3}\NormalTok{, }
+                        \AttributeTok{color =}\NormalTok{ accent),}
+    \AttributeTok{plot.background =} \FunctionTok{element\_rect}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ bg, }
+                                   \AttributeTok{color =}\NormalTok{ bg),}
+    \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{128}\NormalTok{, }
+                              \AttributeTok{face =} \StringTok{"bold"}\NormalTok{, }
+                              \AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{, }
+                              \AttributeTok{margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{b =} \DecValTok{10}\NormalTok{)),}
+    \AttributeTok{plot.subtitle =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{family =} \StringTok{"bar"}\NormalTok{, }
+                                 \AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{, }
+                                 \AttributeTok{margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{b =} \DecValTok{20}\NormalTok{)),}
+    \AttributeTok{plot.caption =}\NormalTok{ ggtext}\SpecialCharTok{::}\FunctionTok{element\_markdown}\NormalTok{(}\AttributeTok{family =} \StringTok{"bar"}\NormalTok{,}
+                                            \AttributeTok{face =} \StringTok{"italic"}\NormalTok{,}
+                                            \AttributeTok{color =}\NormalTok{ colorspace}\SpecialCharTok{::}\FunctionTok{darken}\NormalTok{(accent, }\FloatTok{0.25}\NormalTok{),}
+                                            \AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{,}
+                                            \AttributeTok{margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{t =} \DecValTok{20}\NormalTok{)),}
+    \AttributeTok{plot.margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{b =} \DecValTok{20}\NormalTok{, }\AttributeTok{t =} \DecValTok{50}\NormalTok{, }\AttributeTok{r =} \DecValTok{50}\NormalTok{, }\AttributeTok{l =} \DecValTok{50}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{16}
+\item
+  \textbf{Why does the author render \texttt{plot.caption} using
+  \texttt{ggtext::element\_markdown()}, rather than
+  \texttt{element\_text()} (like he does for rendering
+  \texttt{plot.title} and \texttt{text})?}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The author uses \texttt{ggtext::element\_markdown()} for the
+    \texttt{plot.caption} because the caption contains formatted text or
+    specific text elements such as font icons and bold/italic text that
+    may not be easily interpreted by \texttt{element\_text()}. As such,
+    using \texttt{ggtext::element\_markdown()} is essential for
+    maintaining the correct format of the text elements.
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{v.-assemble-save}{%
+\subsection{V. Assemble \& save}\label{v.-assemble-save}}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{plot\_final }\OtherTok{\textless{}{-}}\NormalTok{ plot\_base }\SpecialCharTok{+}
+  \FunctionTok{inset\_element}\NormalTok{(plot\_shape, }\AttributeTok{left =} \DecValTok{0}\NormalTok{, }\AttributeTok{right =} \DecValTok{1}\NormalTok{, }\AttributeTok{top =} \DecValTok{1}\NormalTok{, }\AttributeTok{bottom =} \FloatTok{0.66}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{inset\_element}\NormalTok{(plot\_us, }\AttributeTok{left =} \FloatTok{0.42}\NormalTok{, }\AttributeTok{right =} \DecValTok{1}\NormalTok{, }\AttributeTok{top =} \FloatTok{0.74}\NormalTok{, }\AttributeTok{bottom =} \FloatTok{0.33}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{inset\_element}\NormalTok{(plot\_day, }\AttributeTok{left =} \DecValTok{0}\NormalTok{, }\AttributeTok{right =} \FloatTok{0.66}\NormalTok{, }\AttributeTok{top =} \FloatTok{0.4}\NormalTok{, }\AttributeTok{bottom =} \DecValTok{0}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{inset\_element}\NormalTok{(quote1, }\AttributeTok{left =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{right =} \DecValTok{1}\NormalTok{, }\AttributeTok{top =} \FloatTok{0.8}\NormalTok{, }\AttributeTok{bottom =} \FloatTok{0.72}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{inset\_element}\NormalTok{(quote2, }\AttributeTok{left =} \DecValTok{0}\NormalTok{, }\AttributeTok{right =} \DecValTok{1}\NormalTok{, }\AttributeTok{top =} \FloatTok{0.52}\NormalTok{, }\AttributeTok{bottom =} \FloatTok{0.4}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{inset\_element}\NormalTok{(quote3, }\AttributeTok{left =} \FloatTok{0.7}\NormalTok{, }\AttributeTok{right =} \DecValTok{1}\NormalTok{, }\AttributeTok{top =} \FloatTok{0.2}\NormalTok{, }\AttributeTok{bottom =} \DecValTok{0}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{inset\_element}\NormalTok{(plot\_ufo, }\AttributeTok{left =} \FloatTok{0.25}\NormalTok{, }\AttributeTok{right =} \FloatTok{0.41}\NormalTok{, }\AttributeTok{top =} \FloatTok{0.23}\NormalTok{, }\AttributeTok{bottom =} \FloatTok{0.17}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{plot\_annotation}\NormalTok{(}
+    \AttributeTok{theme =} \FunctionTok{theme}\NormalTok{(}
+      \AttributeTok{plot.background =} \FunctionTok{element\_rect}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ bg,}
+                                     \AttributeTok{color =}\NormalTok{ bg)}
+\NormalTok{    )}
+\NormalTok{  ) }
+
+\FunctionTok{ggsave}\NormalTok{(}\AttributeTok{plot =}\NormalTok{ plot\_final, }
+       \AttributeTok{filename =}\NormalTok{ here}\SpecialCharTok{::}\FunctionTok{here}\NormalTok{(}\StringTok{"outputs"}\NormalTok{, }\StringTok{"ufo\_sightings\_infographic.png"}\NormalTok{), }
+       \AttributeTok{height =} \DecValTok{16}\NormalTok{, }
+       \AttributeTok{width =} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{17}
+\item
+  \textbf{Explain how \texttt{plot\_final} is assembled. What do you
+  think is the most challenging aspect of arranging all components into
+  a single plot?}
+
+  \begin{itemize}
+  \item
+    Here, plot\_final is assembled by establishing the base plot
+    (\texttt{plot\_base}) that provides the main title, subtitle, and
+    caption, along with overall styling such as background color, fonts,
+    and text size. Individual plot elements like \texttt{plot\_shape},
+    \texttt{plot\_us}, \texttt{plot\_day}, and \texttt{plot\_ufo}, as
+    well as the text elements (\texttt{quote1}, \texttt{quote2},
+    \texttt{quote3}) are then added on as ``layers'' using
+    \texttt{inset\_element()}. Each ``layer'' specifies its position
+    within the overall plot using coordinates (arguments \texttt{left},
+    \texttt{right}, \texttt{top}, and \texttt{bottom}) relative to the
+    base plot. Finally, \texttt{plot\_annotation()} is applied to set
+    the overall background color referencing \texttt{bg}.
+  \item
+    Perhaps the most challenging aspect of arranging all components is
+    managing the placement and sizing of multiple ``layered'' plots such
+    that they do not overlap, are legible, and are balanced visually in
+    the overall layout. Because the coordinates are manually set,
+    testing individual positions is required to ensure that text,
+    charts, and visualizations fit together appropriately and appear
+    aesthetically pleasing.
+  \end{itemize}
+\item
+  \textbf{Can you think of one reason the author may have chosen to
+  separate the construction of \texttt{plot\_base} and
+  \texttt{plot\_final}?}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    It was likely easier to separate \texttt{plot\_base} and
+    \texttt{plot\_final} to keep the code organized and flexible,
+    defining the overall styling and text once in \texttt{plot\_base}
+    and then focusing solely on arranging the individual plots and text
+    elements in \texttt{plot\_final}. By creating \texttt{plot\_base}
+    first, the author could establish the overall title, caption, and
+    styling in a single reusable object. Then, \texttt{plot\_final}
+    could be used to focus solely on arranging\textbf{/}layering each
+    individual plot without having to redefine the base style each time.
+    As a result, this approach was more feasible and reproducible for
+    styling and organizing individual elements of the infographic.
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{answer-some-final-reflective-questions}{%
+\subsection{Answer some final reflective
+questions}\label{answer-some-final-reflective-questions}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{19}
+\item
+  \textbf{During week 2, we discuss
+  \href{https://eds-240-data-viz.github.io/course-materials/lecture-slides/lecture2.1-choosing-graphic-forms-slides.html\#/title-slide}{Choosing
+  the right graphic form}. Refer to this lecture when answering the
+  sub-questions, below:}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    \textbf{What ``perceptual tasks'' (from Cleveland \& McGill's
+    heirarchy) must the viewer perform to extract information from these
+    visualizations?}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      A viewer might perform some ``perceptual tasks'' to extract
+      information from these visualizations. For example, the viewer
+      could compare the position along a common, such as reading
+      differences in time (hours to days) or interpreting the placement
+      of elements within panels (University of Missouri-Saint Louis,
+      n.d.). The user could also compare length and area (University of
+      Missouri-Saint Louis, n.d.), such as judging the bar lengths or
+      focusing on the ``upper'' edge of each bar to assess the total
+      sightings per UFO shape. Another key task is comparing the color
+      intensity or opacity, which requires judging differences in the
+      transparency to infer higher or lower rates of total sightings
+      over population over time.
+    \end{itemize}
+  \item
+    \textbf{What task(s) do you think the author wanted to enable or
+    message(s) he wanted to convey with these visualizations (see
+    lecture 2.1, slide 16 for examples)? Be sure to note at least one
+    task / message for each of the three data viz.}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      I believe the author aimed to \uline{visualize spatial patterns}
+      in UFO sightings across states over time, using opacity in
+      \texttt{plot\_us} to represent differences in sightings per state.
+      For \texttt{plot\_shape}, I think the author wanted to
+      \uline{allow comparisons of the total number of sightings} for
+      each UFO shape, highlighting which shape types were most numerous
+      relative to the others. In \texttt{plot\_day}, I believe the
+      author wanted to \uline{display temporal trends and highlight
+      broader patterns} in UFO sightings across different hours of the
+      day and days of the week.
+    \end{itemize}
+  \item
+    \textbf{Name at least one caveat to the ``hierarchy of perceptual
+    tasks'' that the author employed to achieve a goal(s) you noted in
+    question b?}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Once caveat to the hierarchy of perceptual tasks is the author's
+      use of opacity (color intensity) to encode values. Encoding data
+      with color is lower in the hierarchy and may be less precise than
+      position or length. While opacity may be effective for showcasing
+      overall patterns and highlighting areas of higher or lower
+      activity, exact comparisons between values can be difficult. As
+      such, viewers can find it difficult to correctly understand small
+      differences in opacity, especially with smaller differences in
+      total sightings between states in \texttt{plot\_us}, for example.
+    \end{itemize}
+  \end{enumerate}
+\item
+  \textbf{Describe two elements of this piece that you find
+  visually-pleasing / easy to understand / intuitive. Why?}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    One visually appealing aspect of this piece is the use titles to
+    create a U.S. map and represent total UFO sightings by state, which
+    makes the spatial distribution intuitive and helps readers easily
+    connect sighting frequency with geographic location. This approach
+    allows viewers to understand where sightings are most common across
+    the country. Another element is the circular \texttt{plot\_day},
+    which resembles a clock and helps viewers intuitively visualize when
+    UFO sightings are most frequent throughout the day and across the
+    week.
+  \end{itemize}
+\item
+  \textbf{Describe two elements of this piece that you feel could be
+  better presented in a different way. Why?}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    One element that could be presented differently is the clock-style
+    visualization showing when UFO sightings occur. It can be confusing
+    to see 12 AM labeled twice, and it would be clearer if 12 PM were
+    labeled at the bottom instead. Additionally, the weekday labels are
+    difficult to interpret because they are stacked closely together,
+    which reduces readability. The opacity scale could also be improved,
+    as the least frequently reported UFO shapes are too dark, making it
+    harder to distinguish differences among the lower values.
+  \end{itemize}
+\item
+  \textbf{Describe two new things that you learned by interpreting /
+  annotating this code. These could be packages, functions, or even code
+  organizational approaches that you hadn't previously known about or
+  considered.}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    One new thing I learned was how text and annotations can be treated
+    as individual ggplot objects and then combined with other plots
+    using functions like \texttt{inset\_element()}. This approach to
+    building more complex visualizations was unfamilar to me and showed
+    how separating text and charts into individual components can make
+    layout design more flexible and easier to manage. Another thing I
+    learned was how opacity can be scaled for color intensity using
+    functions like \texttt{scales::rescale()}. Seeing opacity used
+    consistently across different plots to communicate the intensity of
+    total sightings helped me better understand how aesthetic mapping
+    can reinforce patterns without relying only on position or length.
+  \end{itemize}
+\item
+  \textbf{How, if at all, did you use AI tools to help you interpret
+  this code? Describe your approach to using these tools for this
+  assignment. In what ways was consulting the documentation more (or
+  less) helpful than using AI?}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    While AI was useful in understanding examples of applications of
+    unfamiliar functions such as \texttt{inset\_element()}, I found it
+    easier to consult the documentation to better understand the
+    definition of each function and its specific parameters. For
+    example, I found myself consulting the documentation for
+    \texttt{font\_add\_google()} to understand the difference between
+    the \texttt{name} and \texttt{family} argument in its truest
+    definition, while I asked AI to provide examples of different
+    situations where \texttt{family} and \texttt{name} were not similar.
+  \end{itemize}
+\end{enumerate}
+
+
+
+\end{document}
