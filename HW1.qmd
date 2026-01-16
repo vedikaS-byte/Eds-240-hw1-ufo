@@ -138,7 +138,7 @@ df_shape <- ufo_sightings |>
 
 7.  **What does `fct_reorder` do when it is applied to the `shape` variable? What would have happened if this step was not performed?**
 
-    -    `fct_reorder()` reorders the levels of the `shape` factor based on the values of `total_sightings`. The UFO shape categories are arranged in order of decreasing frequency rather than remaining in the default or alphabetical order, ensuring that when plotted, the shapes appear in a meaningful order that reflects how common each shape is (ex. plotting each level in descending order rather than alphabetically). Without reordering the levels in the `shape` factor, the `shape` variable would remain in its original ordering, and the plot using `shape` on its respective access would display the categories in a nonsensical numerical order; it would be harder to visually interpret and compare the frequency of different UFO shapes.
+    -   `fct_reorder()` reorders the levels of the `shape` factor based on the values of `total_sightings`. The UFO shape categories are arranged in order of decreasing frequency rather than remaining in the default or alphabetical order, ensuring that when plotted, the shapes appear in a meaningful order that reflects how common each shape is (ex. plotting each level in descending order rather than alphabetically). Without reordering the levels in the `shape` factor, the `shape` variable would remain in its original ordering, and the plot using `shape` on its respective access would display the categories in a nonsensical numerical order; it would be harder to visually interpret and compare the frequency of different UFO shapes.
 
 8.  **What is the purpose of rescaling `opacity_val`? And why rescale from 0.3 to 1?**
 
@@ -234,6 +234,7 @@ plot_shape <- ggplot(data = df_shape) +
                                  margin = margin(b = 10)),
     legend.position = "none" 
   )
+
 ```
 
 12. **Explain the values provided to the `x` aesthetic for both text geoms (`shape` & `total_sightings`).**
@@ -308,15 +309,16 @@ plot_day <- ggplot(data = df_day_hour) +
     plot.background = element_rect(fill = , color = bg),
     legend.position = "none"
   )
+
 ```
 
-14. **This plot includes one-letter labels for each day of the week. How is ths accomplished when week days are written using their three-letter abbreviations (e.g. `Mon`, `Tue`) in the `df_day_hour` data frame?**
+14. **This plot includes one-letter labels for each day of the week. How is this accomplished when week days are written using their three-letter abbreviations (e.g. `Mon`, `Tue`) in the `df_day_hour` data frame?**
 
-    -   Answer here
+    -   The one-letter weekday labels are created by extracting the first letter of the three-letter weekday abbreviations in the `wday` column. This is done in `geom_text()` with `label = str_sub(string = wday, start = 1, end = 1)`, which takes only the first character of each weekday (ex. "M" from "Mon", "T" from "Tue", etc.) to display as a single-letter label on the plot.
 
 15. **What role do the `ylim()` and `xlim()` functions play in shaping a ggplot, and how do they change the visual layout of this particular plot? To better understand their effect, try rerunning the code with each of these lines commented out and observe how the plot’s spacing and composition change.**
 
-    -   Answer here
+    -   In ggplot, the `xlim()` and `ylim()` functions set specific limits on the x and y axes, controlling the range of values that are displayed and influencing the spacing of plot elements. In `plot_day`, the polar coordinate system is used, so limits are set for shaping a circular layout. The `ylim(-5, 9)` extends the y-axis beyond the range of the day labels, creating space for the one-letter weekday labels and hour labels such that they do not overlap with the tiles. `xlim(NA, 23.55)` slightly extends the x-axis beyond the maximum hour (12 AM) to ensure that the 12 AM hour tile and its label are visible. Without these limits, the axes auto scale to the data frame, causing text labels to overlap or collide with the tile; the overall circular layout becomes cramped.
 
 ### iv. Build `quote*`s
 
@@ -377,7 +379,7 @@ quote3 <- ggplot() +
 
 16. **Why do you think the author chose to convert these text elements (and also in `plot_ufo`, below!) into ggplot objects (you may consider returning to this question after you've worked your way through all of the code)?**
 
-    -   Answer here
+    -   The author likely converted these text elements into separate ggplot objects so they could be treated as regular plots and integrated more feasibly into the final infographic as visual components of the same `geom`\* type. By making each quote its own ggplot, each `quote` can be arranged together using other packages like `patchwork` onto the same panel. This allows for easier control over styling aesthetics, such as font, color, size, and alignment of each individual `quote`; there is a greater control over layout and formatting with the converted text elements.
 
 ### v. Build `plot_ufo`
 
@@ -432,7 +434,7 @@ plot_base <- ggplot() +
 
 17. **Why does the author render `plot.caption` using `ggtext::element_markdown()`, rather than `element_text()` (like he does for rendering `plot.title` and `text`)?**
 
-    -   Answer here
+    -   The author uses `ggtext::element_markdown()` for the `plot.caption` because the caption contains formatted text or specific text elements such as font icons and bold/italic text that may not be easily interpreted by `element_text()`. As such, using `ggtext::element_markdown()` is essentially for maintaining the correct format of the text elements.
 
 ## V. Assemble & save
 
@@ -463,11 +465,13 @@ ggsave(plot = plot_final,
 
 18. **Explain how `plot_final` is assembled. What do you think is the most challenging aspect of arranging all components into a single plot?**
 
-    -   Answer here
+    -   Here, plot_final is assembled by establishing the base plot (`plot_base`) that provides the main title, subtitle, and caption, along with overall styling such as background color, fonts, and text size. Individual plot elements like `plot_shape`, `plot_us`, `plot_day`, and `plot_ufo`, as well as the text elements (`quote1`, `quote2`, `quote3`) are then added on as "layers" using `inset_element()`. Each "layer" specifies its position within the overall plot using coordinates (arguments `left`, `right`, `top`, and `bottom`) relative to the base plot. Finally, `plot_annotation()` is applied to set the overall background color referencing `bg`.
+
+    -   Perhaps the most challenging aspect of arranging all components is managing the placement and sizing of multiple "layered" plots such that they do not overlap, are legible, and are balanced visually in the overall layout. Because the coordinates are manually set, testing individual positions is required to ensure that text, charts, and visualizations fit together appropriately and appear aesthetically pleasing.
 
 19. **Can you think of one reason the author may have chosen to separate the construction of `plot_base` and `plot_final`?**
 
-    -   Answer here
+    -    It was likely easier to separate `plot_base` and `plot_final` to keep the code organized and flexible, defining the overall styling and text once in `plot_base` and then focusing solely on arranging the individual plots and text elements in `plot_final`. By creating `plot_base` first, the author could establish the overall title, caption, and styling in a single reusable object. Then, `plot_final` could be used to focus solely on arranging**/**layering each individual plot without having to redefine the base style each time. As a result, this approach was more feasible and reproducible for styling and organizing individual elements of the infographic.
 
 ## Answer some final reflective questions
 
@@ -475,11 +479,11 @@ ggsave(plot = plot_final,
 
     a.  **What "perceptual tasks" (from Cleveland & McGill's heirarchy) must the viewer perform to extract information from these visualizations?**
 
-        -   Answer here
+        -   A viewer might perform some "perceptual tasks" to extract information from these visualizations. For example, the viewer could compare the position along a common, such as reading differences in time (hours to days) or interpreting the placement of elements within panels (University of Missouri-Saint Louis, n.d.). The user could also compare length and area (University of Missouri-Saint Louis, n.d.), such as judging the bar lengths or focusing on the "upper" edge of each bar to assess the total sightings per UFO shape. Another key task is comparing the color intensity or opacity, which requires judging differences in the transparency to infer higher or lower rates of total sightings over population over time.
 
     b.  **What task(s) do you think the author wanted to enable or message(s) he wanted to convey with these visualizations (see lecture 2.1, slide 16 for examples)? Be sure to note at least one task / message for each of the three data viz.**
 
-        -   Answer here
+        -   
 
     c.  **Name at least one caveat to the "hierarchy of perceptual tasks" that the author employed to achieve a goal(s) you noted in question b?**
 

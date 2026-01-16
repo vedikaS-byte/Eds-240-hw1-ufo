@@ -326,11 +326,11 @@ Some notes before you get started
 <ol start="9" type="1">
 <li><p><strong>Describe what this data frame contains.</strong></p>
 <ul>
-<li>Answer here</li>
+<li><code>df_day_hour</code> contains the total daily observations and scaled opacity for UFO sightings by day of the week and hour of the day. For each combination of day and hour, <code>df_day_hour</code> records the total number of sightings (<code>total_daily_obs</code>) and a scaled value (<code>opacity_val</code>) that indicates the relative intensity of sightings for visualization purposes.</li>
 </ul></li>
 <li><p><strong>What is the purpose of the last line inside the <code>case_when()</code> statement (<code>TRUE ~ paste0(hour - 12, "pm")</code>)?</strong></p>
 <ul>
-<li>Answer here</li>
+<li>The last line in the <code>case_when()</code> statement <code>(TRUE ~ paste0(hour - 12, "pm"))</code> converts hours greater than 12 from 24-hour time to 12-hour PM format such that every hour has a readable label (<code>hour_lab</code>).</li>
 </ul></li>
 </ol>
 </section>
@@ -352,7 +352,7 @@ Some notes before you get started
 <ol start="11" type="1">
 <li><p><strong>In your own words, what is the difference between <code>paste0()</code> and <code>glue()</code>? Why did the author use <code>paste0</code> to construct <code>quotes</code> and <code>glue</code> to construct the other text elements?</strong></p>
 <ul>
-<li>Answer here</li>
+<li>The difference between <code>paste0()</code> and <code>glue()</code> is defined in how both functions handle combining text with variables. <code>paste0()</code> concatenates strings and values without considering variable names inside the string; this is suitable for straightforwardly combining fixed text and data. As observed in <code>quotes</code>, the author utilized <code>paste0()</code> to add a prefix and suffix of “…” around the selected summary sentences in <code>ufo_sightings</code>. <code>glue()</code> allows the author to write a string with variable placeholders that are automatically replaced with their respective values, allowing it to be cleaner and easier to use for formatted text. The author used <code>paste0()</code> for <code>quotes</code> because the task was simple concatenation (strings tied to a subsetted part of the data frame), while <code>glue()</code> was used for the other elements to make the code cleaner and easier to read when building formatted strings (using <code>{variable}</code>).</li>
 </ul></li>
 </ol>
 </section>
@@ -393,7 +393,7 @@ Some notes before you get started
 <ol start="12" type="1">
 <li><p><strong>Explain the values provided to the <code>x</code> aesthetic for both text geoms (<code>shape</code> &amp; <code>total_sightings</code>).</strong></p>
 <ul>
-<li>Answer here</li>
+<li>In <code>plot_shape</code>, the x values for the two <code>geom_text()</code> layers control the horizontal placement of the text relative to the bars. The first <code>geom_text()</code> labels the <code>shape</code> names, and <code>x = 200</code> sets a fixed position on the x-axis such that all the shape names appear aligned to the left of the horizontal bars. In the second <code>geom_text()</code>, the <code>x</code> aesthetic is assigned to display the total sightings per UFO shape (<code>total_sightings</code>); <code>x = total_sightings - 200</code> places the text for the number of total sightings at the end of each bar’s length.</li>
 </ul></li>
 </ol>
 </section>
@@ -431,7 +431,7 @@ Some notes before you get started
 <ol start="13" type="1">
 <li><p><strong>Consider the order of <code>geom_*()</code> layers in the the above plot (<code>plot_us</code>). Why did the author order the layers in this way?</strong></p>
 <ul>
-<li>Answer here</li>
+<li>In <code>plot_us</code>, the order of the <code>geom_*()</code> layers is intentional because ggplot draws layers in the order they are added, where earlier layers appear underneath later ones. The first layer is <code>geom_rect()</code>, which created the colored rectangle for each facet to serve as a background representing the opacity of UFO sightings. By placing it first, the rectangles appear behind all proceeding elements. The state labels can then be added onto the plot and faceted by state, adding the state labels and the sightings per 10,000 state residents on top of the rectangles. By drawing the text after the background is established, the labels will be clearly visible and readable. If the order were reversed and the rectangles were drawn after the text, then the text would be hidden and difficult to interpret.</li>
 </ul></li>
 </ol>
 </section>
@@ -462,13 +462,13 @@ Some notes before you get started
 <span id="cb9-22"><a href="#cb9-22"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="14" type="1">
-<li><p><strong>This plot includes one-letter labels for each day of the week. How is ths accomplished when week days are written using their three-letter abbreviations (e.g.&nbsp;<code>Mon</code>, <code>Tue</code>) in the <code>df_day_hour</code> data frame?</strong></p>
+<li><p><strong>This plot includes one-letter labels for each day of the week. How is this accomplished when week days are written using their three-letter abbreviations (e.g.&nbsp;<code>Mon</code>, <code>Tue</code>) in the <code>df_day_hour</code> data frame?</strong></p>
 <ul>
-<li>Answer here</li>
+<li>The one-letter weekday labels are created by extracting the first letter of the three-letter weekday abbreviations in the <code>wday</code> column. This is done in <code>geom_text()</code> with <code>label = str_sub(string = wday, start = 1, end = 1)</code>, which takes only the first character of each weekday (ex. “M” from “Mon”, “T” from “Tue”, etc.) to display as a single-letter label on the plot.</li>
 </ul></li>
 <li><p><strong>What role do the <code>ylim()</code> and <code>xlim()</code> functions play in shaping a ggplot, and how do they change the visual layout of this particular plot? To better understand their effect, try rerunning the code with each of these lines commented out and observe how the plot’s spacing and composition change.</strong></p>
 <ul>
-<li>Answer here</li>
+<li>In ggplot, the <code>xlim()</code> and <code>ylim()</code> functions set specific limits on the x and y axes, controlling the range of values that are displayed and influencing the spacing of plot elements. In <code>plot_day</code>, the polar coordinate system is used, so limits are set for shaping a circular layout. The <code>ylim(-5, 9)</code> extends the y-axis beyond the range of the day labels, creating space for the one-letter weekday labels and hour labels such that they do not overlap with the tiles. <code>xlim(NA, 23.55)</code> slightly extends the x-axis beyond the maximum hour (12 AM) to ensure that the 12 AM hour tile and its label are visible. Without these limits, the axes auto scale to the data frame, causing text labels to overlap or collide with the tile; the overall circular layout becomes cramped.</li>
 </ul></li>
 </ol>
 </section>
@@ -527,7 +527,7 @@ Some notes before you get started
 <ol start="16" type="1">
 <li><p><strong>Why do you think the author chose to convert these text elements (and also in <code>plot_ufo</code>, below!) into ggplot objects (you may consider returning to this question after you’ve worked your way through all of the code)?</strong></p>
 <ul>
-<li>Answer here</li>
+<li>The author likely converted these text elements into separate ggplot objects so they could be treated as regular plots and integrated more feasibly into the final infographic as visual components of the same <code>geom</code>* type. By making each quote its own ggplot, each <code>quote</code> can be arranged together using other packages like <code>patchwork</code> onto the same panel. This allows for easier control over styling aesthetics, such as font, color, size, and alignment of each individual <code>quote</code>; there is a greater control over layout and formatting with the converted text elements.</li>
 </ul></li>
 </ol>
 </section>
@@ -578,7 +578,7 @@ Some notes before you get started
 <ol start="17" type="1">
 <li><p><strong>Why does the author render <code>plot.caption</code> using <code>ggtext::element_markdown()</code>, rather than <code>element_text()</code> (like he does for rendering <code>plot.title</code> and <code>text</code>)?</strong></p>
 <ul>
-<li>Answer here</li>
+<li>The author uses <code>ggtext::element_markdown()</code> for the <code>plot.caption</code> because the caption contains formatted text or specific text elements such as font icons and bold/italic text that may not be easily interpreted by <code>element_text()</code>. As such, using <code>ggtext::element_markdown()</code> is essentially for maintaining the correct format of the text elements.</li>
 </ul></li>
 </ol>
 </section>
@@ -609,7 +609,7 @@ Some notes before you get started
 <ol start="18" type="1">
 <li><p><strong>Explain how <code>plot_final</code> is assembled. What do you think is the most challenging aspect of arranging all components into a single plot?</strong></p>
 <ul>
-<li>Answer here</li>
+<li>Here,</li>
 </ul></li>
 <li><p><strong>Can you think of one reason the author may have chosen to separate the construction of <code>plot_base</code> and <code>plot_final</code>?</strong></p>
 <ul>
