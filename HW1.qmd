@@ -170,11 +170,11 @@ df_day_hour <- ufo_sightings |>
 
 9.  **Describe what this data frame contains.**
 
-    -   Answer here
+    -   `df_day_hour` contains the total daily observations and scaled opacity for UFO sightings by day of the week and hour of the day. For each combination of day and hour, `df_day_hour` records the total number of sightings (`total_daily_obs`) and a scaled value (`opacity_val`) that indicates the relative intensity of sightings for visualization purposes.
 
 10. **What is the purpose of the last line inside the `case_when()` statement (`TRUE ~ paste0(hour - 12, "pm")`)?**
 
-    -   Answer here
+    -   The last line in the `case_when()` statement `(TRUE ~ paste0(hour - 12, "pm"))` converts hours greater than 12 from 24-hour time to 12-hour PM format such that every hour has a readable label (`hour_lab`).
 
 ## III. Prepare text elements
 
@@ -196,7 +196,7 @@ caption <- glue("{original}{space}{dan_github}
 
 11. **In your own words, what is the difference between `paste0()` and `glue()`? Why did the author use `paste0` to construct `quotes` and `glue` to construct the other text elements?**
 
-    -   Answer here
+    -   The difference between `paste0()` and `glue()` is defined in how both functions handle combining text with variables. `paste0()` concatenates strings and values without considering variable names inside the string; this is suitable for straightforwardly combining fixed text and data. As observed in `quotes`, the author utilized `paste0()` to add a prefix and suffix of "..." around the selected summary sentences in `ufo_sightings`. `glue()` allows the author to write a string with variable placeholders that are automatically replaced with their respective values, allowing it to be cleaner and easier to use for formatted text. The author used `paste0()` for `quotes` because the task was simple concatenation (strings tied to a subsetted part of the data frame), while `glue()` was used for the other elements to make the code cleaner and easier to read when building formatted strings (using `{variable}`).
 
 ## IV. Build plots
 
@@ -238,7 +238,7 @@ plot_shape <- ggplot(data = df_shape) +
 
 12. **Explain the values provided to the `x` aesthetic for both text geoms (`shape` & `total_sightings`).**
 
-    -   Answer here
+    -   In `plot_shape`, the x values for the two `geom_text()` layers control the horizontal placement of the text relative to the bars. The first `geom_text()` labels the `shape` names, and `x = 200` sets a fixed position on the x-axis such that all the shape names appear aligned to the left of the horizontal bars. In the second `geom_text()`, the `x` aesthetic is assigned to display the total sightings per UFO shape (`total_sightings`); `x = total_sightings - 200` places the text for the number of total sightings at the end of each bar's length.
 
 ### ii. Build `plot_us`
 
@@ -278,7 +278,7 @@ plot_us <-  ggplot(df_us) +
 
 13. **Consider the order of `geom_*()` layers in the the above plot (`plot_us`). Why did the author order the layers in this way?**
 
-    -   Answer here
+    -   In `plot_us`, the order of the `geom_*()` layers is intentional because ggplot draws layers in the order they are added, where earlier layers appear underneath later ones. The first layer is `geom_rect()`, which created the colored rectangle for each facet to serve as a background representing the opacity of UFO sightings. By placing it first, the rectangles appear behind all proceeding elements. The state labels can then be added onto the plot and faceted by state, adding the state labels and the sightings per 10,000 state residents on top of the rectangles. By drawing the text after the background is established, the labels will be clearly visible and readable. If the order were reversed and the rectangles were drawn after the text, then the text would be hidden and difficult to interpret.
 
 ### iii. Build `plot_day`
 
