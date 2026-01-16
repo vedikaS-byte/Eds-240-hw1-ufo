@@ -434,7 +434,7 @@ plot_base <- ggplot() +
 
 17. **Why does the author render `plot.caption` using `ggtext::element_markdown()`, rather than `element_text()` (like he does for rendering `plot.title` and `text`)?**
 
-    -   The author uses `ggtext::element_markdown()` for the `plot.caption` because the caption contains formatted text or specific text elements such as font icons and bold/italic text that may not be easily interpreted by `element_text()`. As such, using `ggtext::element_markdown()` is essentially for maintaining the correct format of the text elements.
+    -   The author uses `ggtext::element_markdown()` for the `plot.caption` because the caption contains formatted text or specific text elements such as font icons and bold/italic text that may not be easily interpreted by `element_text()`. As such, using `ggtext::element_markdown()` is essential for maintaining the correct format of the text elements.
 
 ## V. Assemble & save
 
@@ -483,24 +483,24 @@ ggsave(plot = plot_final,
 
     b.  **What task(s) do you think the author wanted to enable or message(s) he wanted to convey with these visualizations (see lecture 2.1, slide 16 for examples)? Be sure to note at least one task / message for each of the three data viz.**
 
-        -   
+        -   I believe the author aimed to [visualize spatial patterns]{.underline} in UFO sightings across states over time, using opacity in `plot_us` to represent differences in sightings per state. For `plot_shape`, I think the author wanted to [allow comparisons of the total number of sightings]{.underline} for each UFO shape, highlighting which shape types were most numerous relative to the others. In `plot_day`, I believe the author wanted to [display temporal trends and highlight broader patterns]{.underline} in UFO sightings across different hours of the day and days of the week.
 
     c.  **Name at least one caveat to the "hierarchy of perceptual tasks" that the author employed to achieve a goal(s) you noted in question b?**
 
-        -   Answer here
+        -    Once caveat to the hierarchy of perceptual tasks is the author's use of opacity (color intensity) to encode values. Encoding data with color is lower in the hierarchy and may be less precise than position or length. While opacity may be effective for showcasing overall patterns and highlighting areas of higher or lower activity, exact comparisons between values can be difficult. As such, viewers can find it difficult to correctly understand small differences in opacity, especially with smaller differences in total sightings between states in `plot_us`, for example.
 
 21. **Describe two elements of this piece that you find visually-pleasing / easy to understand / intuitive. Why?**
 
-    -   Answer here
+    -   One visually appealing aspect of this piece is the use titles to create a U.S. map and represent total UFO sightings by state, which makes the spatial distribution intuitive and helps readers easily connect sighting frequency with geographic location. This approach allows viewers to understand where sightings are most common across the country. Another element is the circular `plot_day`, which resembles a clock and helps viewers intuitively visualize when UFO sightings are most frequent throughout the day and across the week.
 
 22. **Describe two elements of this piece that you feel could be better presented in a different way. Why?**
 
-    -   Answer here
+    -   One element that could be presented differently is the clock-style visualization showing when UFO sightings occur. It can be confusing to see 12 AM labeled twice, and it would be clearer if 12 PM were labeled at the bottom instead. Additionally, the weekday labels are difficult to interpret because they are stacked closely together, which reduces readability. The opacity scale could also be improved, as the least frequently reported UFO shapes are too dark, making it harder to distinguish differences among the lower values.
 
 23. **Describe two new things that you learned by interpreting / annotating this code. These could be packages, functions, or even code organizational approaches that you hadn't previously known about or considered.**
 
-    -   Answer here
+    -   One new thing I learned was how text and annotations can be treated as individual ggplot objects and then combined with other plots using functions like `inset_element()`. This approach to building more complex visualizations was unfamilar to me and showed how separating text and charts into individual components can make layout design more flexible and easier to manage. Another thing I learned was how opacity can be scaled for color intensity using functions like `scales::rescale()`. Seeing opacity used consistently across different plots to communicate the intensity of total sightings helped me better understand how aesthetic mapping can reinforce patterns without relying only on position or length.
 
 24. **How, if at all, did you use AI tools to help you interpret this code? Describe your approach to using these tools for this assignment. In what ways was consulting the documentation more (or less) helpful than using AI?**
 
-    -   Answer here
+    -   While AI was useful in understanding examples of applications of unfamiliar functions such as `inset_element()`, I found it easier to consult the documentation to better understand the definition of each function and its specific parameters. For example, I found myself consulting the documentation for `font_add_google()` to understand the difference between the `name` and `family` argument, while I asked AI to provide examples of different situations where `family` and `name` were not similar.
