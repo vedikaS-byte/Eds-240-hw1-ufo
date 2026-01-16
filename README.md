@@ -14,6 +14,8 @@ This repository is organized as follows and contains:
 
 -   `HW1.qmd`: File containing the interpretation, explanation, and reflection of code written by Dan Oehm.
 
+-   `HW1.html`: Rendered HTML file of interpretation analysis.
+
 -   `ufo_sightings_infographic.png`: Finalized infographic of the UFO visualization analysis.
 
 -   `fonts`: Contains the primary Google Fonts utilized in the analysis.
